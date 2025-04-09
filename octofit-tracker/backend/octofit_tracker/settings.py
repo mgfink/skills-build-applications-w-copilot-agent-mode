@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# Set the default host to the codespace URL
+DEFAULT_HOST = 'jubilant-space-journey-jp5pr54j44fq5jq-8000.app.github.dev'
+
 
 # Application definition
 
@@ -38,7 +41,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'octofit',
-    'djongo'
     'corsheaders',
     'rest_framework',
 ]
