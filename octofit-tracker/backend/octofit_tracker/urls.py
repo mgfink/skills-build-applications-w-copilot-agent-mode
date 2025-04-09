@@ -27,7 +27,13 @@ router.register(r'leaderboard', LeaderboardViewSet)
 router.register(r'workouts', WorkoutViewSet)
 
 urlpatterns = [
-    path('', api_root, name='api-root'),  # Root endpoint
+    path('', api_root, name='root'),  # Map the root URL to api_root
+    path('api/', api_root, name='api-root'),  # Custom API root
+    path('api/v1/', include(router.urls)),  # Versioned API routes
     path('admin/', admin.site.urls),  # Admin endpoint
-    path('api/', include(router.urls)),  # API endpoint
+    path('api/workouts/', WorkoutViewSet.as_view({'get': 'list', 'post': 'create'}), name='workouts'),  # Direct mapping for workouts
+    path('api/users/', UserViewSet.as_view({'get': 'list', 'post': 'create'}), name='users'),  # Direct mapping for users
+    path('api/teams/', TeamViewSet.as_view({'get': 'list', 'post': 'create'}), name='teams'),  # Direct mapping for teams
+    path('api/activities/', ActivityViewSet.as_view({'get': 'list', 'post': 'create'}), name='activities'),  # Direct mapping for activities
+    path('api/leaderboard/', LeaderboardViewSet.as_view({'get': 'list', 'post': 'create'}), name='leaderboard'),  # Direct mapping for leaderboard
 ]
